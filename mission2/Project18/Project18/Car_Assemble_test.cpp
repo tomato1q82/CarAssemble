@@ -26,7 +26,6 @@ TEST(CarTest, CarTypeBuildTest)
 	EXPECT_EQ(CarEngine::GetInstance().GetTotalType(), NUM_TOTAL_ENGINE_TYPE);
 	EXPECT_EQ(Brake::GetInstance().GetTotalType(), NUM_TOTAL_BRAKE_SYSTEM_TYPE);
 	EXPECT_EQ(Steering::GetInstance().GetTotalType(), NUM_TOTAL_STEERING_SYSTEM_TYPE);
-
 }
 
 TEST(CarTest, TypeNameTest)

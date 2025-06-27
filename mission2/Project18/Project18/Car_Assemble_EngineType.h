@@ -26,18 +26,18 @@ public:
         return instance;
     }
 
-    virtual char* GetTypeName(int type) override
+    char* GetTypeName(int type) override
     {
         return typeNames[type];
     }
 
-    virtual void AddType(const char* name) override
+    void AddType(const char* name) override
     {
         typeNames[totalType] = const_cast<char*>(name);
         totalType++;
     };
 
-    virtual void Build() override
+    void Build() override
     {
         AddType("GM");
         AddType("TOYOTA");
@@ -45,9 +45,9 @@ public:
         AddType("BROKEN_ENGINE");
     }
 
-    virtual int GetTotalType() override { return totalType - 1; }
+    int GetTotalType() override { return totalType - 1; }
 
-    virtual void PrintAllType() override
+    void PrintAllType() override
     {
 
         for (int i = 1; i < totalType; i++)
@@ -55,6 +55,7 @@ public:
             printf("%d. %s\n", i, typeNames[i]);
         }
     }
+
 private:
 
 
