@@ -1,5 +1,7 @@
 #pragma once  
 #include "ICar_Assemble_Type.h"  
+#include <stdio.h>
+#include <string.h>
 
 enum SteeringSystem
 {
@@ -38,6 +40,15 @@ public:
     }
 
     virtual int GetTotalType() override { return totalType - 1; }
+
+    virtual void PrintAllType() override
+    {
+
+        for (int i = 1; i < totalType; i++)
+        {
+            printf("%d. %s\n", i, typeNames[i]);
+        }
+    }
 
 private:
     int totalType{ 1 };

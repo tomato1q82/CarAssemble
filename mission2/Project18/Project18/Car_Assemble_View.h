@@ -26,36 +26,31 @@ public:
             printf("===============================\n");
             printf("어떤 차량 타입을 선택할까요?\n");
 
-            printf("1. Sedan\n");
-            printf("2. SUV\n");
-            printf("3. Truck\n");
+            Car::GetInstance().PrintAllType();
         }
         else if (step == Engine_Q)
         {
             printf(CLEAR_SCREEN);
             printf("어떤 엔진을 탑재할까요?\n");
             printf("0. 뒤로가기\n");
-            printf("1. GM\n");
-            printf("2. TOYOTA\n");
-            printf("3. WIA\n");
-            printf("4. 고장난 엔진\n");
+
+            CarEngine::GetInstance().PrintAllType();
         }
         else if (step == brakeSystem_Q)
         {
             printf(CLEAR_SCREEN);
             printf("어떤 제동장치를 선택할까요?\n");
             printf("0. 뒤로가기\n");
-            printf("1. MANDO\n");
-            printf("2. CONTINENTAL\n");
-            printf("3. BOSCH\n");
+
+            Brake::GetInstance().PrintAllType();
         }
         else if (step == SteeringSystem_Q)
         {
             printf(CLEAR_SCREEN);
             printf("어떤 조향장치를 선택할까요?\n");
             printf("0. 뒤로가기\n");
-            printf("1. BOSCH\n");
-            printf("2. MOBIS\n");
+
+            Steering::GetInstance().PrintAllType();
         }
         else if (step == Run_Test)
         {
@@ -102,33 +97,33 @@ public:
         switch (step)
         {
         case CarType_Q:
-            if (!(answer >= START_CART_TYPE && answer <= NUM_TOTAL_CAR_TYPE))
+            if (!(answer >= START_CART_TYPE && answer <= Car::GetInstance().GetTotalType()))
             {
-                printf("ERROR :: 차량 타입은 %d ~ %d 범위만 선택 가능\n", START_CART_TYPE, NUM_TOTAL_CAR_TYPE);
+                printf("ERROR :: 차량 타입은 %d ~ %d 범위만 선택 가능\n", START_CART_TYPE, Car::GetInstance().GetTotalType());
                 delay(DELAY_TIME_FOR_INPUT);
                 return -1;
             }
             break;
         case Engine_Q:
-            if (!(answer >= RETURN_TO_PREVIOUS && answer <= NUM_TOTAL_ENGINE_TYPE))
+            if (!(answer >= RETURN_TO_PREVIOUS && answer <= CarEngine::GetInstance().GetTotalType()))
             {
-                printf("ERROR :: 엔진은 %d ~ %d 범위만 선택 가능\n", START_ENGINE_TYPE, NUM_TOTAL_ENGINE_TYPE);
+                printf("ERROR :: 엔진은 %d ~ %d 범위만 선택 가능\n", START_ENGINE_TYPE, CarEngine::GetInstance().GetTotalType());
                 delay(DELAY_TIME_FOR_INPUT);
                 return -1;
             }
             break;
         case brakeSystem_Q:
-            if (!(answer >= RETURN_TO_PREVIOUS && answer <= NUM_TOTAL_BRAKE_SYSTEM_TYPE))
+            if (!(answer >= RETURN_TO_PREVIOUS && answer <= Brake::GetInstance().GetTotalType()))
             {
-                printf("ERROR :: 제동장치는 %d ~ %d 범위만 선택 가능\n", START_BRAKE_SYSTEM_TYPE, NUM_TOTAL_BRAKE_SYSTEM_TYPE);
+                printf("ERROR :: 제동장치는 %d ~ %d 범위만 선택 가능\n", START_BRAKE_SYSTEM_TYPE, Brake::GetInstance().GetTotalType());
                 delay(DELAY_TIME_FOR_INPUT);
                 return -1;
             }
             break;
         case SteeringSystem_Q:
-            if (!(answer >= RETURN_TO_PREVIOUS && answer <= NUM_TOTAL_STEERING_SYSTEM_TYPE))
+            if (!(answer >= RETURN_TO_PREVIOUS && answer <= Steering::GetInstance().GetTotalType()))
             {
-                printf("ERROR :: 조향장치는 %d ~ %d 범위만 선택 가능\n", START_STEERING_SYSTEM_TYPE, NUM_TOTAL_STEERING_SYSTEM_TYPE);
+                printf("ERROR :: 조향장치는 %d ~ %d 범위만 선택 가능\n", START_STEERING_SYSTEM_TYPE, Steering::GetInstance().GetTotalType());
                 delay(DELAY_TIME_FOR_INPUT);
                 return -1;
             }
