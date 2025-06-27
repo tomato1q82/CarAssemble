@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include "Type.h"
+#include <stdexcept>
 
 class CarAssembleView {
 public:
@@ -60,6 +61,11 @@ public:
             printf("1. RUN\n");
             printf("2. Test\n");
         }
+        else
+        {
+			throw std::invalid_argument("Invalid step for displayUserView");
+        }
+
         printf("===============================\n");
     }
 
@@ -165,6 +171,9 @@ public:
                 break;
             case SteeringSystem_Q:
                 selectSteeringSystem(answer);
+                break;
+            default:
+                throw std::invalid_argument("Invalid step for displayUserView");
                 break;
             }
 
