@@ -2,6 +2,9 @@
 #include "ICar_Assemble_Type.h"  
 #include <stdio.h>
 #include <string.h>
+
+const int MAX_BRAKE_TYPE = 256;
+
 enum brakeSystem
 {
     START_BRAKE_SYSTEM_TYPE = 1,
@@ -51,5 +54,5 @@ public:
     }
 private:
     int totalType{ 1 };
-    char* typeNames[256];
+    char* typeNames[MAX_BRAKE_TYPE];
 };

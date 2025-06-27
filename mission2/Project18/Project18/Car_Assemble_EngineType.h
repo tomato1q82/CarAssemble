@@ -2,6 +2,9 @@
 #include "ICar_Assemble_Type.h"  
 #include <stdio.h>
 #include <string.h>
+
+const int MAX_ENGINE_TYPE = 256;
+
 enum Engine
 {
     START_ENGINE_TYPE = 1,
@@ -56,5 +59,5 @@ private:
 
 
     int totalType{ 1 };
-    char* typeNames[256];
+    char* typeNames[MAX_ENGINE_TYPE];
 };

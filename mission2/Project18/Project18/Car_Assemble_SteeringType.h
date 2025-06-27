@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <string.h>
 
+const int MAX_STEERING_TYPE = 256;
+
 enum SteeringSystem
 {
     START_STEERING_SYSTEM_TYPE = 1,
@@ -52,5 +54,5 @@ public:
 
 private:
     int totalType{ 1 };
-    char* typeNames[256];
+    char* typeNames[MAX_STEERING_TYPE];
 };

@@ -2,6 +2,9 @@
 #include "ICar_Assemble_Type.h"  
 #include <stdio.h>
 #include <string.h>
+
+const int MAX_CAR_TYPE = 256;
+
 enum CarType
 {
     START_CART_TYPE = 1,
@@ -55,5 +58,5 @@ private:
 	Car() = default;
 
     int totalType{ 1 };  
-    char* typeNames[256];  
+    char* typeNames[MAX_CAR_TYPE];
 };
