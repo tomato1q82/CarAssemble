@@ -17,6 +17,8 @@ int main()
 #define CLEAR_SCREEN "\033[H\033[2J"
 constexpr auto DELAY_TIME_FOR_INPUT = 1200;
 constexpr auto INVALID_INPUT = -1;
+constexpr auto RETURN_TO_PREVIOUS = 0;
+constexpr auto RETURN_TO_START = 0;
 
 void selectCarType(int answer);
 void selectEngine(int answer);
@@ -54,14 +56,15 @@ enum CarType
 
 enum Engine
 {
+    
     START_ENGINE_TYPE = 1,
 
     GM = START_ENGINE_TYPE,
     TOYOTA,
     WIA,
-    BRAEK_EMGINE,
+    BROKEN_ENGINE,
 
-    NUM_TOTAL_ENGINE_TYPE = BRAEK_EMGINE
+    NUM_TOTAL_ENGINE_TYPE = BROKEN_ENGINE
 };
 
 enum brakeSystem
@@ -223,7 +226,7 @@ int getUserInput(int step)
         }
         break;
     case Engine_Q:
-        if (!(answer >= 0 && answer <= NUM_TOTAL_ENGINE_TYPE))
+        if (!(answer >= RETURN_TO_PREVIOUS && answer <= NUM_TOTAL_ENGINE_TYPE))
         {
             printf("ERROR :: 엔진은 %d ~ %d 범위만 선택 가능\n", START_ENGINE_TYPE, NUM_TOTAL_ENGINE_TYPE);
             delay(DELAY_TIME_FOR_INPUT);
@@ -231,7 +234,7 @@ int getUserInput(int step)
         }
         break;
     case brakeSystem_Q:
-        if (!(answer >= 0 && answer <= NUM_TOTAL_BRAKE_SYSTEM_TYPE))
+        if (!(answer >= RETURN_TO_PREVIOUS && answer <= NUM_TOTAL_BRAKE_SYSTEM_TYPE))
         {
             printf("ERROR :: 제동장치는 %d ~ %d 범위만 선택 가능\n", START_BRAKE_SYSTEM_TYPE, NUM_TOTAL_BRAKE_SYSTEM_TYPE);
             delay(DELAY_TIME_FOR_INPUT);
@@ -239,7 +242,7 @@ int getUserInput(int step)
         }
         break;
     case SteeringSystem_Q:
-        if (!(answer >= 0 && answer <= NUM_TOTAL_STEERING_SYSTEM_TYPE))
+        if (!(answer >= RETURN_TO_PREVIOUS && answer <= NUM_TOTAL_STEERING_SYSTEM_TYPE))
         {
             printf("ERROR :: 조향장치는 %d ~ %d 범위만 선택 가능\n", START_STEERING_SYSTEM_TYPE, NUM_TOTAL_STEERING_SYSTEM_TYPE);
             delay(DELAY_TIME_FOR_INPUT);
@@ -247,7 +250,7 @@ int getUserInput(int step)
         }
         break;
     case Run_Test:
-        if (!(answer >= 0 && answer <= NUM_TOTAL_RUN_TEST_TYPE))
+        if (!(answer >= RETURN_TO_START && answer <= NUM_TOTAL_RUN_TEST_TYPE))
         {
             printf("ERROR :: Run 또는 Test 중 하나를 선택 필요\n");
             delay(DELAY_TIME_FOR_INPUT);
@@ -385,7 +388,7 @@ void runProducedCar()
     }
     else
     {
-        if (stack[Engine_Q] == 4)
+        if (stack[Engine_Q] == BROKEN_ENGINE)
         {
             printf("엔진이 고장나있습니다.\n");
             printf("자동차가 움직이지 않습니다.\n");
