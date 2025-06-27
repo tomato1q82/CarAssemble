@@ -25,6 +25,7 @@ public:
             printf(" '-(@)----------------(@)--'\n");
             printf("===============================\n");
             printf("어떤 차량 타입을 선택할까요?\n");
+
             printf("1. Sedan\n");
             printf("2. SUV\n");
             printf("3. Truck\n");
@@ -70,7 +71,7 @@ public:
 
     int getUserInput(int step)
     {
-        char buf[100];
+        char buf[MAX_BUFFER];
         printf("INPUT > ");
         fgets(buf, sizeof(buf), stdin);
 
@@ -185,42 +186,28 @@ private:
         void selectCarType(int answer)
         {
             inputStack[CarType_Q] = answer;
-            if (answer == 1)
-                printf("차량 타입으로 Sedan을 선택하셨습니다.\n");
-            if (answer == 2)
-                printf("차량 타입으로 SUV을 선택하셨습니다.\n");
-            if (answer == 3)
-                printf("차량 타입으로 Truck을 선택하셨습니다.\n");
+            
+            printf("차량 타입으로 %s 을 선택하셨습니다.\n", Car::GetInstance().GetTypeName(inputStack[CarType_Q]));
         }
 
         void selectEngine(int answer)
         {
             inputStack[Engine_Q] = answer;
-            if (answer == 1)
-                printf("GM 엔진을 선택하셨습니다.\n");
-            if (answer == 2)
-                printf("TOYOTA 엔진을 선택하셨습니다.\n");
-            if (answer == 3)
-                printf("WIA 엔진을 선택하셨습니다.\n");
+
+            printf("%s 엔진을 선택하셨습니다.\n", CarEngine::GetInstance().GetTypeName(inputStack[Engine_Q]));
         }
 
         void selectbrakeSystem(int answer)
         {
             inputStack[brakeSystem_Q] = answer;
-            if (answer == 1)
-                printf("MANDO 제동장치를 선택하셨습니다.\n");
-            if (answer == 2)
-                printf("CONTINENTAL 제동장치를 선택하셨습니다.\n");
-            if (answer == 3)
-                printf("BOSCH 제동장치를 선택하셨습니다.\n");
+
+            printf("%s 제동장치를 선택하셨습니다.\n", Brake::GetInstance().GetTypeName(inputStack[brakeSystem_Q]));
         }
 
         void selectSteeringSystem(int answer)
         {
             inputStack[SteeringSystem_Q] = answer;
-            if (answer == 1)
-                printf("BOSCH 조향장치를 선택하셨습니다.\n");
-            if (answer == 2)
-                printf("MOBIS 조향장치를 선택하셨습니다.\n");
+
+            printf("%s 조향장치를 선택하셨습니다.\n", Steering::GetInstance().GetTypeName(inputStack[SteeringSystem_Q]));
         }
 };

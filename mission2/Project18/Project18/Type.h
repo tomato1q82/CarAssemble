@@ -11,6 +11,7 @@ constexpr auto DELAY_TIME_FOR_INPUT = 500;
 constexpr auto INVALID_INPUT = -1;  
 constexpr auto RETURN_TO_PREVIOUS = 0;  
 constexpr auto RETURN_TO_START = 0;  
+constexpr auto MAX_BUFFER = 100;
 
 enum QuestionType  
 {  

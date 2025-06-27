@@ -20,7 +20,7 @@ int main()
 
     while (true)
     {
-		static int step = CarType_Q;
+	    static int step = CarType_Q;
         carView.displayView(step);
 
         int answer = carView.getUserInput(step);
@@ -29,7 +29,7 @@ int main()
 
         if (step == Run_Test)
         {
-			carProducer.handleSelection(&step, answer);
+		    carProducer.handleSelection(&step, answer);
         }
         else
         {

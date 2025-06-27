@@ -8,4 +8,5 @@ public:
 
 	virtual char* GetTypeName(int type) = 0;
 	virtual int GetTotalType() = 0;
+	
 };
