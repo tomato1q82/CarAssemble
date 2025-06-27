@@ -12,12 +12,11 @@ public:
     {
 	}
 
-    void displayView(int step)
+    void displayUserView(int step)
     {
         if (step == CarType_Q)
         {
             printf(CLEAR_SCREEN);
-
             printf("        ______________\n");
             printf("       /|            | \n");
             printf("  ____/_|_____________|____\n");
@@ -64,22 +63,14 @@ public:
         printf("===============================\n");
     }
 
-    int getUserInput(int step)
+    int getValidatedUserInput(int step)
     {
         char buf[MAX_BUFFER];
         printf("INPUT > ");
         fgets(buf, sizeof(buf), stdin);
 
         // 엔터 개행문자 제거
-        char* context = nullptr;
-        strtok_s(buf, "\r", &context);
-        strtok_s(buf, "\n", &context);
-
-        if (!strcmp(buf, "exit"))
-        {
-            printf("바이바이\n");
-            exit(0);
-        }
+        DeleteLineFeed(buf);
 
         // 숫자로 된 대답인지 확인
         char* checkNumber;
@@ -138,6 +129,19 @@ public:
             break;
         }
         return answer;
+    }
+
+    void DeleteLineFeed(char  buf[100])
+    {
+        char* context = nullptr;
+        strtok_s(buf, "\r", &context);
+        strtok_s(buf, "\n", &context);
+
+        if (!strcmp(buf, "exit"))
+        {
+            printf("바이바이\n");
+            exit(0);
+        }
     }
 
     void handleSelection(int* step, int answer)

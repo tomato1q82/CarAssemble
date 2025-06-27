@@ -8,11 +8,11 @@ TEST(CarTest, DisplayViewTest)
 	int stack[NUM_TOTAL_STACK];
 	CarAssembleView carView(stack);
 
-	EXPECT_NO_THROW(carView.displayView(CarType_Q));
-	EXPECT_NO_THROW(carView.displayView(Engine_Q));
-	EXPECT_NO_THROW(carView.displayView(brakeSystem_Q));
-	EXPECT_NO_THROW(carView.displayView(SteeringSystem_Q));
-	EXPECT_NO_THROW(carView.displayView(Run_Test));
+	EXPECT_NO_THROW(carView.displayUserView(CarType_Q));
+	EXPECT_NO_THROW(carView.displayUserView(Engine_Q));
+	EXPECT_NO_THROW(carView.displayUserView(brakeSystem_Q));
+	EXPECT_NO_THROW(carView.displayUserView(SteeringSystem_Q));
+	EXPECT_NO_THROW(carView.displayUserView(Run_Test));
 }
 
 TEST(CarTest, CarTypeBuildTest)
@@ -82,7 +82,7 @@ TEST(CarTest, ProducerRunTest_CarRunnable)
 	stack[2] = 1;
 	stack[3] = 1;
 
-;	CarAssembleProducter carProducer(stack);
+;	CarAssemblyProducer carProducer(stack);
 
 	EXPECT_TRUE(carProducer.runProducedCar());
 }
@@ -96,7 +96,7 @@ TEST(CarTest, ProducerRunTest_CarBroken)
 	stack[2] = 1;
 	stack[3] = 1;
 
-	CarAssembleProducter carProducer(stack);
+	CarAssemblyProducer carProducer(stack);
 
 	EXPECT_FALSE(carProducer.runProducedCar());
 }
@@ -110,7 +110,7 @@ TEST(CarTest, ProducerRunTest_CarDiabled)
 	stack[2] = 2;
 	stack[3] = 1;
 
-	CarAssembleProducter carProducer(stack);
+	CarAssemblyProducer carProducer(stack);
 
 	EXPECT_FALSE(carProducer.runProducedCar());
 }
@@ -124,7 +124,7 @@ TEST(CarTest, ProducerTest_CarRunnable)
 	stack[2] = 1;
 	stack[3] = 1;
 
-	CarAssembleProducter carProducer(stack);
+	CarAssemblyProducer carProducer(stack);
 
 	EXPECT_TRUE(carProducer.testProducedCar());
 }
@@ -138,7 +138,7 @@ TEST(CarTest, ProducerTest_CarDisable)
 	stack[2] = 2;
 	stack[3] = 1;
 
-	CarAssembleProducter carProducer(stack);
+	CarAssemblyProducer carProducer(stack);
 
 	EXPECT_FALSE(carProducer.testProducedCar());
 }

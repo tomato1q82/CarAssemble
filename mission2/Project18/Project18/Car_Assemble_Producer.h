@@ -6,11 +6,12 @@
 #include <windows.h>
 #include "Type.h"
 
-class CarAssembleProducter
+class CarAssemblyProducer
 {
 public:
-    CarAssembleProducter(int* inputStack) : stack(inputStack) 
+    CarAssemblyProducer(int* inputStack) : stack(inputStack) 
     {
+		// Initialize Car, CarEngine, Brake, and Steering instances
 		Car::GetInstance().Build();
         CarEngine::GetInstance().Build();
         Brake::GetInstance().Build();

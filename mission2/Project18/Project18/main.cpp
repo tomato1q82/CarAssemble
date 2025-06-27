@@ -16,14 +16,14 @@ int main()
 {
     int stack[NUM_TOTAL_STACK];
     CarAssembleView carView(stack);
-	CarAssembleProducter carProducer(stack);
+	CarAssemblyProducer carProducer(stack);
 
     while (true)
     {
 	    static int step = CarType_Q;
-        carView.displayView(step);
+        carView.displayUserView(step);
 
-        int answer = carView.getUserInput(step);
+        int answer = carView.getValidatedUserInput(step);
         if (answer == INVALID_INPUT)
             continue;
 
